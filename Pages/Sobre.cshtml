@@ -1,0 +1,122 @@
+﻿@page
+@model PortifolioCSH.Pages.SobreModel
+@{
+    Layout = "_Layout";
+      <!-- Explicitly set layout -->
+    ViewData["Title"] = "Sobre Mim";
+}
+
+<!-- Conteúdo da página Sobre -->
+<section class="about-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h1 class="display-4">Sobre <span class="text-primary">Mim</span></h1>
+                <p class="lead">Conheça minha trajetória profissional e habilidades</p>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <!-- Coluna da Foto -->
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <div class="about-img">
+                    <img src="/images/about-me.jpg" alt="Minha foto" class="img-fluid rounded shadow">
+                </div>
+            </div>
+
+            <!-- Coluna do Conteúdo -->
+            <div class="col-lg-7">
+                <h3 class="mb-3">Desenvolvedor Full Stack .NET</h3>
+                <p class="text-muted">
+                    Sou um desenvolvedor apaixonado por criar soluções robustas e eficientes usando tecnologias Microsoft.
+                    Com [X] anos de experiência, já trabalhei em diversos projetos desafiadores que me permitiram
+                    desenvolver habilidades técnicas e de gestão.
+                </p>
+
+                <div class="row mt-4">
+                    <!-- Informações Pessoais -->
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-angle-right text-primary me-2"></i>
+                                <strong>Nome:</strong> Seu Nome Completo
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-angle-right text-primary me-2"></i>
+                                <strong>Idade:</strong> Sua Idade
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-angle-right text-primary me-2"></i>
+                                <strong>Cidade:</strong> Sua Cidade, Estado
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Informações Profissionais -->
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-angle-right text-primary me-2"></i>
+                                <strong>Formação:</strong> Sua Formação
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-angle-right text-primary me-2"></i>
+                                <strong>Experiência:</strong> X+ anos
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-angle-right text-primary me-2"></i>
+                                <strong>Disponibilidade:</strong> [Freelance/CLT/PJ]
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Habilidades Técnicas -->
+                <div class="skills mt-5">
+                    <h4 class="mb-3">Habilidades Técnicas</h4>
+
+                    <div class="skill-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="mb-0">C# & .NET</h6>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Move CSS to a separate file or add to layout -->
+<style>
+    .about-section {
+        background-color: #fff;
+        padding-top: 100px;
+    }
+
+    .about-img img {
+        transition: transform 0.5s;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .about-img:hover img {
+        transform: scale(1.03);
+    }
+
+    .skill-item {
+        transition: all 0.3s;
+    }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+        }
+
+    .progress {
+        height: 10px;
+        border-radius: 5px;
+    }
+</style>
