@@ -1,6 +1,8 @@
 ﻿# PortfolioCSH - Portfólio Pessoal em ASP.NET Core
-
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-5.2.8-blue?logo=.net)
+
+![Demonstração do Site](./Site.gif)
+
 
 Um projeto de portfólio profissional desenvolvido em ASP.NET Core para demonstrar habilidades, projetos e informações de contato.
 
