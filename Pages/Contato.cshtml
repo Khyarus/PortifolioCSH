@@ -1,0 +1,105 @@
+﻿@page
+@model PortifolioCSH.Pages.ContatoModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Contato";
+}
+
+<!-- Seção de Contato -->
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h1 class="display-4">Entre em <span class="text-primary">Contato</span></h1>
+                <p class="lead">Estou disponível para oportunidades e colaborações</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Informações de Contato -->
+            <div class="col-lg-5 mb-5 mb-lg-0">
+                <div class="contact-info">
+                    <h3 class="mb-4">Informações para Contato</h3>
+
+                    <div class="contact-item d-flex mb-4">
+                        <div class="contact-icon me-3">
+                            <i class="fas fa-map-marker-alt text-primary fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Localização</h5>
+                            <p>Sua Cidade, Estado</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item d-flex mb-4">
+                        <div class="contact-icon me-3">
+                            <i class="fas fa-envelope text-primary fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Email</h5>
+                            <p>seu.email@exemplo.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item d-flex mb-4">
+                        <div class="contact-icon me-3">
+                            <i class="fas fa-phone-alt text-primary fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Telefone</h5>
+                            <p>(XX) XXXX-XXXX</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links mt-5">
+                        <a href="#" class="me-3"><i class="fab fa-github fa-2x"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulário de Contato -->
+            <div class="col-lg-7">
+                <form id="contactForm" method="post">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Nome Completo</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Assunto</label>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="form-group">
+                            <label for="message" class="form-label">Mensagem</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary btn-lg">Enviar Mensagem</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}

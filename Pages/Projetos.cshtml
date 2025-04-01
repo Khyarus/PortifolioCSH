@@ -1,0 +1,160 @@
+﻿@page
+@model PortifolioCSH.Pages.ProjetosModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Meus Projetos";
+}
+
+<!-- Conteúdo da página Projetos -->
+<section class="projects-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h1 class="display-4">Meus <span class="text-primary">Projetos</span></h1>
+                <p class="lead">Confira alguns dos trabalhos que desenvolvi</p>
+            </div>
+        </div>
+
+        <!-- Filtros de Categoria -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-primary active" data-filter="all">Todos</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="web">Web</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="mobile">Mobile</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="desktop">Desktop</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="api">APIs</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Projetos -->
+        <div class="row g-4 projects-container">
+            <!-- Projeto 1 -->
+            <div class="col-md-6 col-lg-4" data-category="web">
+                <div class="card project-card h-100">
+                    <div class="card-img-top overflow-hidden">
+                        <img src="/images/projects/project1.jpg" class="img-fluid" alt="Projeto Web 1">
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#projectModal1">
+                                <i class="fas fa-eye"></i> Detalhes
+                            </a>
+                            <a href="#" class="btn btn-outline-primary btn-sm" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Visitar
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Sistema de Gerenciamento</h5>
+                        <p class="card-text">Sistema completo desenvolvido com ASP.NET Core, Entity Framework e SQL Server.</p>
+                        <div class="badge-container">
+                            <span class="badge bg-secondary">C#</span>
+                            <span class="badge bg-secondary">.NET Core</span>
+                            <span class="badge bg-secondary">MVC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 2 -->
+            <div class="col-md-6 col-lg-4" data-category="api">
+                <div class="card project-card h-100">
+                    <div class="card-img-top overflow-hidden">
+                        <img src="/images/projects/project2.jpg" class="img-fluid" alt="API RESTful">
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#projectModal2">
+                                <i class="fas fa-eye"></i> Detalhes
+                            </a>
+                            <a href="#" class="btn btn-outline-primary btn-sm" target="_blank">
+                                <i class="fas fa-code"></i> Código
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">API RESTful</h5>
+                        <p class="card-text">API desenvolvida com ASP.NET Core, JWT Authentication e Swagger.</p>
+                        <div class="badge-container">
+                            <span class="badge bg-secondary">Web API</span>
+                            <span class="badge bg-secondary">JWT</span>
+                            <span class="badge bg-secondary">Swagger</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 3 -->
+            <div class="col-md-6 col-lg-4" data-category="mobile">
+                <div class="card project-card h-100">
+                    <div class="card-img-top overflow-hidden">
+                        <img src="/images/projects/project3.jpg" class="img-fluid" alt="App Mobile">
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#projectModal3">
+                                <i class="fas fa-eye"></i> Detalhes
+                            </a>
+                            <a href="#" class="btn btn-outline-primary btn-sm" target="_blank">
+                                <i class="fab fa-google-play"></i> Play Store
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Aplicativo Xamarin</h5>
+                        <p class="card-text">Aplicativo multiplataforma desenvolvido com Xamarin.Forms.</p>
+                        <div class="badge-container">
+                            <span class="badge bg-secondary">Xamarin</span>
+                            <span class="badge bg-secondary">C#</span>
+                            <span class="badge bg-secondary">MVVM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal para Detalhes do Projeto 1 -->
+<div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel1">Sistema de Gerenciamento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="/images/projects/project1.jpg" class="img-fluid mb-3" alt="Projeto Web 1">
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Descrição</h5>
+                        <p>Sistema completo desenvolvido para gerenciamento de processos internos de uma empresa, com módulos de cadastro, relatórios e dashboard analítico.</p>
+
+                        <h5 class="mt-4">Tecnologias</h5>
+                        <ul>
+                            <li>ASP.NET Core MVC</li>
+                            <li>Entity Framework Core</li>
+                            <li>SQL Server</li>
+                            <li>Bootstrap 5</li>
+                            <li>Chart.js</li>
+                        </ul>
+
+                        <h5 class="mt-4">Funcionalidades</h5>
+                        <ul>
+                            <li>CRUD completo</li>
+                            <li>Autenticação e autorização</li>
+                            <li>Geração de relatórios em PDF</li>
+                            <li>Gráficos dinâmicos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <a href="#" class="btn btn-primary" target="_blank">Visitar Projeto</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}

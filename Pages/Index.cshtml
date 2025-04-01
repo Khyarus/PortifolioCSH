@@ -5,7 +5,7 @@
 }
 
 <!-- Hero Section -->
-<section class="hero-section bg-dark text-white text-center py-5">
+<section class="hero-section bg-dark text-white text-center py-5" id="mainContent">
     <div class="container py-5">
         <img src="/images/profile.jpg" alt="Minha Foto" class="rounded-circle mb-4" width="150" height="150">
         <h1 class="display-4">Olá, eu sou <span class="text-primary">[Seu Nome]</span></h1>
@@ -18,5 +18,24 @@
     </div>
 </section>
 
-<!-- Resto do conteúdo do portfólio (Sobre, Projetos, Experiência, Contato) -->
-<!-- ... (use o mesmo código das outras seções que forneci anteriormente) ... -->
+<!-- Seção do Jogo -->
+<section class="game-section py-5 bg-light" id="gameSection">
+    <div class="container text-center">
+        <h2 class="mb-4">Joguinho do Desenvolvedor</h2>
+        <p class="mb-4">Tente não deixar o bichinho pegar seu cursor!</p>
+        
+        <div id="gameArea" class="game-area">
+            <div id="creature" class="creature">👾</div>
+            <div id="cursor" class="cursor">🖱️</div>
+        </div>
+        
+        <div class="mt-4">
+            <p id="score">Tempo sobrevivendo: <span>0</span> segundos</p>
+            <button id="startGame" class="btn btn-primary">Começar Jogo</button>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/site.js" asp-append-version="true"></script>
+}
