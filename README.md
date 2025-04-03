@@ -45,40 +45,59 @@ PortfolioCSH/
 - JavaScript ES6+
 - Bootstrap 5 (presumido)
 
-## 🚀 Execução
+## 🔐 Funcionalidades de Autenticação Adicionadas 
 
-```bash
-# Clonar repositório
-git clone https://github.com/seu-usuario/PortfolioCSH.git
+##### Foi implementado um sistema completo de autenticação de usuários com:
+## __Registro de novos usuários__
 
-# Entrar na pasta do projeto
-cd PortfolioCSH
+Validação de campos
 
-# Executar (requer .NET 6+)
-dotnet run
+Criptografia de senhas (usando ASP.NET Core Identity)
+
+Confirmação via e-mail (opcional)
+
+## Login seguro
+
+Autenticação baseada em cookies
+
+Proteção contra ataques de força bruta
+
+Gerenciamento de sessões
+
+## Banco de Dados
+
+Armazenamento seguro de credenciais
+
+Hash de senhas usando algoritmos PBKDF2
+
+Migrações para atualização do schema
+
+![Demonstração do Site](./Site2.gif)
+## 📦 Dependências Adicionais
+
+    Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+    Microsoft.EntityFrameworkCore.SqlServer
+
+    Microsoft.AspNetCore.Identity.UI
+
+## ⚙️ Configuração
+
+As configurações de conexão com o banco de dados e políticas de senha podem ser ajustadas no arquivo appsettings.json.
+json
+Copy
 ```
+"Identity": {
+  "Password": {
+    "RequiredLength": 8,
+    "RequireDigit": true,
+    "RequireLowercase": true,
+    "RequireUppercase": true,
+    "RequireNonAlphanumeric": true
+  }
+}
+``` 
+Para testar localmente, execute as migrações do Entity Framework Core:
+bash
 
-
-## 🔧 Personalização
-
-Edite os arquivos .cshtml para alterar conteúdo
-
- Modifique site.css para ajustar estilos
-
-Atualize favicon.ico para sua marca pessoal
-
-Adicione projetos em Projetos.cshtml
-
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para detalhes.
-
-Desenvolvido com ❤️ por [Seu Nome] - Mostre seu trabalho ao mundo!
-
-
-Observações:
-1. Adicionei badges e emojis para melhor visualização
-2. Mantive a estrutura genérica como solicitado
-3. Incluí seções básicas de um README profissional
-4. Adicionei um comando de execução simplificado
-5. Você deve substituir "[Seu Nome]" e a URL do repositório quando for usar
+dotnet ef database update
