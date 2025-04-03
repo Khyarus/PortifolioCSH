@@ -1,20 +1,41 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Authentication;
 
-public class LogoutModel : PageModel
+namespace PortifolioCSH.Pages
 {
-    public async Task<IActionResult> OnPost(string returnUrl = null)
+    [AllowAnonymous]
+    public class LogoutModel : PageModel
     {
-        await HttpContext.SignOutAsync();
-        if (returnUrl != null)
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly ILogger<LogoutModel> _logger;
+
+        public LogoutModel(SignInManager<IdentityUser> signInManager, ILogger<LogoutModel> logger)
         {
-            return LocalRedirect(returnUrl);
+            _signInManager = signInManager;
+            _logger = logger;
         }
-        else
+
+        public async Task<IActionResult> OnPost(string returnUrl = null)
         {
-            return RedirectToPage();
+            await _signInManager.SignOutAsync();
+            _logger.LogInformation("Usuário deslogado.");
+
+            if (returnUrl != null)
+            {
+                return LocalRedirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToPage("/Index");
+            }
+        }
+
+        public IActionResult OnGet()
+        {
+            // Se alguém acessar via GET, redireciona para a home
+            return RedirectToPage("/Index");
         }
     }
 }

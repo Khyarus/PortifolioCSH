@@ -34,7 +34,7 @@ public class RegisterModel : PageModel
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "A {0} deve ter pelo menos {2} e no máximo {1} caracteres.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "A senha deve ter pelo menos {2} e no máximo {1} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Password { get; set; }
@@ -58,13 +58,14 @@ public class RegisterModel : PageModel
         {
             var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
             var result = await _userManager.CreateAsync(user, Input.Password);
+
             if (result.Succeeded)
             {
-                _logger.LogInformation("Usuário criou uma nova conta com senha.");
-
+                _logger.LogInformation("Novo usuário registrado.");
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return LocalRedirect(returnUrl);
             }
+
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError(string.Empty, error.Description);

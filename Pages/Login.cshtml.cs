@@ -21,9 +21,6 @@ public class LoginModel : PageModel
 
     public string ReturnUrl { get; set; }
 
-    [TempData]
-    public string ErrorMessage { get; set; }
-
     public class InputModel
     {
         [Required]
@@ -34,17 +31,12 @@ public class LoginModel : PageModel
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "Lembrar de mim?")]
+        [Display(Name = "Lembrar-me")]
         public bool RememberMe { get; set; }
     }
 
     public void OnGet(string returnUrl = null)
     {
-        if (!string.IsNullOrEmpty(ErrorMessage))
-        {
-            ModelState.AddModelError(string.Empty, ErrorMessage);
-        }
-
         ReturnUrl = returnUrl;
     }
 
@@ -54,24 +46,17 @@ public class LoginModel : PageModel
 
         if (ModelState.IsValid)
         {
-            var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+            var result = await _signInManager.PasswordSignInAsync(
+                Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
             if (result.Succeeded)
             {
-                _logger.LogInformation("Usuário logado.");
+                _logger.LogInformation("Usuário autenticado.");
                 return LocalRedirect(returnUrl);
-            }
-            if (result.RequiresTwoFactor)
-            {
-                return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-            }
-            if (result.IsLockedOut)
-            {
-                _logger.LogWarning("Conta bloqueada.");
-                return RedirectToPage("./Lockout");
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Tentativa de login inválida.");
+                ModelState.AddModelError(string.Empty, "Credenciais inválidas.");
                 return Page();
             }
         }
