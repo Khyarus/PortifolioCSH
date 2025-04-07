@@ -34,12 +34,12 @@ public class IndexModel : PageModel
 
     private string GenerateDonutFrame()
     {
-        var b = new char[width * height];
-        var z = new float[width * height];
-        Array.Fill(b, ' ');
-        Array.Fill(z, 0);
+        var frame = new char[width * height];
+        var zBuffer = new float[width * height];
+        Array.Fill(frame, ' ');
+        Array.Fill(zBuffer, 0);
 
-        // Renderização de alta qualidade
+        // Renderização da rosquinha
         for (float theta = 0; theta < 6.28f; theta += thetaStep)
         {
             for (float phi = 0; phi < 6.28f; phi += phiStep)
@@ -58,7 +58,6 @@ public class IndexModel : PageModel
 
                 float t = sinPhi * circleOffset * cosA - sinTheta * sinA;
 
-                // Posicionamento preciso
                 int x = (int)(width / 2 + width / 2.8f * inverseDist *
                              (cosPhi * circleOffset * cosB - t * sinB));
                 int y = (int)(height / 2 + height / 3.5f * inverseDist *
@@ -66,32 +65,31 @@ public class IndexModel : PageModel
 
                 int o = x + width * y;
 
-                // Cálculo de luminosidade mais preciso
                 int luminance = (int)(10 * ((sinTheta * sinA - sinPhi * cosTheta * cosA) * cosB
                                   - sinPhi * cosTheta * sinA - sinTheta * cosA
                                   - cosPhi * cosTheta * sinB));
 
-                if (y < height && y >= 0 && x >= 0 && x < width && inverseDist > z[o])
+                if (y < height && y >= 0 && x >= 0 && x < width && inverseDist > zBuffer[o])
                 {
-                    z[o] = inverseDist;
-                    b[o] = asciiGradient[Math.Clamp(luminance, 0, asciiGradient.Length - 1)];
+                    zBuffer[o] = inverseDist;
+                    frame[o] = asciiGradient[Math.Clamp(luminance, 0, asciiGradient.Length - 1)];
                 }
             }
         }
 
-        // Atualização suave dos ângulos
+        // Atualização dos ângulos
         A += 0.04f;
         B += 0.02f;
         if (A > 6.28f) A -= 6.28f;
         if (B > 6.28f) B -= 6.28f;
 
-        // Construção do frame otimizada
-        var sb = new StringBuilder(width * height + height); // Pré-alocação
+        // Construção do frame sem cores (manteremos simples por enquanto)
+        var sb = new StringBuilder();
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                sb.Append(b[y * width + x]);
+                sb.Append(frame[y * width + x]);
             }
             if (y < height - 1) sb.Append('\n');
         }
