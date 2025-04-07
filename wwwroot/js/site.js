@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const introOverlay = document.getElementById('introOverlay');
     const mainContent = document.getElementById('mainContent');
-    const gameSection = document.getElementById('gameSection');
+ 
 
     // Verifica se já foi exibido nesta sessão
     const introShown = sessionStorage.getItem('introShown');
@@ -30,95 +30,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // Se já viu a introdução nesta sessão
         introOverlay.style.display = 'none';
         mainContent.style.display = 'block';
-        gameSection.style.display = 'block';
         setTimeout(initGame, 100);
     }
 });
 
-    function initGame() {
-        const gameArea = document.getElementById('gameArea');
-        const creature = document.getElementById('creature');
-        const cursor = document.getElementById('cursor');
-        const scoreDisplay = document.querySelector('#score span');
-        const startButton = document.getElementById('startGame');
-
-        let gameActive = false;
-        let score = 0;
-        let gameInterval;
-
-        // Posição inicial do bichinho
-        let creatureX = Math.random() * (gameArea.offsetWidth - 40);
-        let creatureY = Math.random() * (gameArea.offsetHeight - 40);
-
-        // Mostra o cursor personalizado quando o mouse entra na área
-        gameArea.addEventListener('mouseenter', function () {
-            cursor.style.display = 'block';
-        });
-
-        // Esconde o cursor personalizado quando o mouse sai
-        gameArea.addEventListener('mouseleave', function () {
-            cursor.style.display = 'none';
-        });
-
-        // Inicia o jogo
-        startButton.addEventListener('click', function () {
-            gameActive = true;
-            score = 0;
-            creature.classList.remove('game-over');
-            startButton.style.display = 'none';
-
-            gameInterval = setInterval(function () {
-                score++;
-                scoreDisplay.textContent = score;
-            }, 1000);
-        });
-
-        // Movimenta o cursor personalizado
-        gameArea.addEventListener('mousemove', function (e) {
-            if (!gameActive) return;
-
-            const rect = gameArea.getBoundingClientRect();
-            const x = e.clientX - rect.left - 15;
-            const y = e.clientY - rect.top - 15;
-
-            cursor.style.left = x + 'px';
-            cursor.style.top = y + 'px';
-            moveCreature(x, y);
-        });
-
-        function moveCreature(targetX, targetY) {
-            const speed = 3 + (score * 0.1);
-            const dx = targetX - creatureX;
-            const dy = targetY - creatureY;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance > 0) {
-                creatureX += (dx / distance) * speed;
-                creatureY += (dy / distance) * speed;
-            }
-
-            creature.style.left = creatureX + 'px';
-            creature.style.top = creatureY + 'px';
-
-            if (distance < 30) {
-                endGame();
-            }
-        }
-
-        function endGame() {
-            gameActive = false;
-            clearInterval(gameInterval);
-            creature.classList.add('game-over');
-            startButton.style.display = 'inline-block';
-
-            setTimeout(() => {
-                creature.classList.remove('game-over');
-            }, 1000);
-        }
-
-        creature.style.left = creatureX + 'px';
-        creature.style.top = creatureY + 'px';
-    }
+    
 
     // Inicializa tooltips
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));

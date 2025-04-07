@@ -18,24 +18,34 @@
     </div>
 </section>
 
-<!-- Seção do Jogo -->
-<section class="game-section py-5 bg-light" id="gameSection">
-    <div class="container text-center">
-        <h2 class="mb-4">Joguinho do Desenvolvedor</h2>
-        <p class="mb-4">Tente não deixar o bichinho pegar seu cursor!</p>
-        
-        <div id="gameArea" class="game-area">
-            <div id="creature" class="creature">👾</div>
-            <div id="cursor" class="cursor">🖱️</div>
-        </div>
-        
-        <div class="mt-4">
-            <p id="score">Tempo sobrevivendo: <span>0</span> segundos</p>
-            <button id="startGame" class="btn btn-primary">Começar Jogo</button>
-        </div>
-    </div>
-</section>
+<div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <pre id="donut" style="
+            font-family: 'Courier New', monospace;
+            font-size: 1.2vmin;
+            line-height: 1;
+            margin:0;
+            padding:0;
+            letter-spacing: 1.5px;
+            white-space: pre;
+            text-align: center;
+            overflow: visible;
+            max-width: 100%;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 5px rgba(255,105,180,0.5));
+        ">@Model.DonutFrame</pre>
+</div>
 
-@section Scripts {
-    <script src="~/js/site.js" asp-append-version="true"></script>
-}
+
+<script>
+        function updateDonut() {
+        fetch(`?handler=DonutFrame&t=${Date.now()}`)
+            .then(r => r.json())
+            .then(frame => {
+                document.getElementById('donut').textContent = frame;
+                setTimeout(updateDonut, 50);
+            });
+    }
+    document.addEventListener('DOMContentLoaded', updateDonut);
+</script>
